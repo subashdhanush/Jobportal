@@ -1,0 +1,82 @@
+{% extends 'candidatedbase.html' %}
+{% load static %}
+{% block content%}
+<div class="col-lg-9 col-md-8">
+    <div class="dashboard-body">
+        <div class="dashboard-caption">
+            
+            <div class="dashboard-caption-header">
+                <h4><i class="ti-bell"></i>Alerts Jobs</h4>
+            </div>
+            
+            <div class="dashboard-caption-wrap">
+                
+                <a href="javascript:void(0)" class="btn-savepreview small-btn mrg-bot-30" data-toggle="modal" data-target="#job-alert"><i class="ti-bell"></i>New Alert</a>
+                
+                <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Position</th>
+                          <th scope="col">Criteria</th>
+                          <th scope="col">Created Date</th>
+                          <th scope="col">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row"><a href="job-detail-3.html">IOS Designer</a></th>
+                          <td>Design & Development</td>
+                          <td>10 jan 2020</td>
+                          <td>
+                            <div class="job-buttons">
+                                <a href="job-detail-3.html" class="btn btn-gary manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Apply Job"><i class="ti-hand-point-right"></i></a>
+                                <a href="#" class="btn btn-cancel manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="ti-close"></i></a>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><a href="job-detail-3.html">Online Teacher</a></th>
+                            <td>Education & Coachs</td>
+                            <td>9 jan 2020</td>
+                            <td>
+                            <div class="job-buttons">
+                                <a href="job-detail-3.html" class="btn btn-gary manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Apply Job"><i class="ti-hand-point-right"></i></a>
+                                <a href="#" class="btn btn-cancel manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="ti-close"></i></a>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row"><a href="job-detail-3.html">Cover Design</a></th>
+                          <td>Arts, Design, Media</td>
+                           <td>04 jan 2020</td>
+                          <td>
+                            <div class="job-buttons">
+                                <a href="job-detail-3.html" class="btn btn-gary manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Apply Job"><i class="ti-hand-point-right"></i></a>
+                                <a href="#" class="btn btn-cancel manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="ti-close"></i></a>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row"><a href="job-detail-3.html">Accounting Post</a></th>
+                          <td>Accounting Assistant</td>
+                           <td>02 jan 2020</td>
+                          <td>
+                            <div class="job-buttons">
+                                <a href="job-detail-3.html" class="btn btn-gary manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Apply Job"><i class="ti-hand-point-right"></i></a>
+                                <a href="#" class="btn btn-cancel manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="ti-close"></i></a>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+{%endblock%}

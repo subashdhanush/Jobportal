@@ -1,0 +1,159 @@
+{% extends 'candidatedbase.html' %}
+{% load static%}
+{% block content%}
+<div class="col-lg-9 col-md-8">
+    <div class="dashboard-body">
+        <div class="dashboard-caption">
+            
+            <div class="dashboard-caption-header">
+                <h4><i class="ti-briefcase"></i>Saved Jobs</h4>
+            </div>
+            
+            <div class="dashboard-caption-wrap">
+                
+                <!-- row -->
+                <div class="row">
+                    
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search Name">
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <select id="jb-filter" class="form-control">
+                                <option>Choose Job Status</option>
+                                <option>All Jobs</option>
+                                <option>Approved Jobs</option>
+                                <option>Expire Jobs</option>
+                                <option>Pending Payment</option>
+                                <option>Rejected Jobs</option>
+                                <option>Draft Jobs</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <select id="application-status" class="form-control">
+                                <option>Status</option>
+                                <option>Approved</option>
+                                <option>Pending</option>
+                                <option>Rejected</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- row -->
+                <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Applied Jobs</th>
+                          <th scope="col">Company Name</th>
+                          <th scope="col">Expiry Date</th>
+                          <th scope="col">Salary from</th>
+                          <th scope="col">Salary to</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for i in list%}
+                        <tr>
+                          <th scope="row"><a href="job-detail-3.html">{{i.jobtitle}}</a></th>
+                          <td>{{i.companyname}}</td>
+                          <td>{{i.expirydate}}</td>
+                          <td>
+                            {{i.salaryfrom}}
+                            <!-- <div class="job-buttons">
+                                <a href="../../media/{{i.fileupload}}" class="btn btn-gary manage-btn"  data-original-title="Download Resume">Resume<i class="ti-download"></i></a>
+                            </div> -->
+                          </td>
+                          <td>
+                            {{i.salaryto}}
+                          </td>
+                          <!-- <td>
+                            <div class="job-buttons">
+                                <a href="#" class="btn btn-cancel manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="ti-close"></i></a>
+                            </div>
+                        </td> -->
+                        </tr>
+                        {%endfor%}
+                      </tbody>
+                        <!-- <tr>
+                            <th scope="row"><a href="job-detail-3.html">IOS Designer</a></th>
+                            <td>Rokul Tech</td>
+                            <td>9 jan 2020</td>
+                            <td>
+                                <div class="job-buttons">
+                                    <a href="#" class="btn btn-gary manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Download Resume"><i class="ti-download"></i></a>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="job-buttons">
+                                    <a href="#" class="btn btn-cancel manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="ti-close"></i></a>
+                                </div>
+                            </td>
+                        </tr> -->
+                        <!-- <tr>
+                          <th scope="row"><a href="job-detail-3.html">IOS Designer</a></th>
+                          <td>Irada Soft</td>
+                           <td>04 jan 2020</td>
+                          <td>
+                            <div class="job-buttons">
+                                <a href="#" class="btn btn-gary manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Download Resume"><i class="ti-download"></i></a>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="job-buttons">
+                                <a href="#" class="btn btn-cancel manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="ti-close"></i></a>
+                            </div>
+                          </td>
+                        </tr> -->
+                        <!-- <tr>
+                          <th scope="row"><a href="job-detail-3.html">IOS Designer</a></th>
+                          <td>Singoor Ltd</td>
+                           <td>02 jan 2020</td>
+                          <td>
+                            <div class="job-buttons">
+                                <a href="#" class="btn btn-gary manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Download Resume"><i class="ti-download"></i></a>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="job-buttons">
+                                <a href="#" class="btn btn-cancel manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="ti-close"></i></a>
+                            </div>
+                          </td>
+                        </tr> -->
+                     
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

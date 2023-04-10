@@ -1,0 +1,52 @@
+{% extends 'empbase.html' %}
+{% load static %}
+
+{% block content %}
+<div class="col-lg-9 col-md-8">
+	<div class="dashboard-body">
+          <div class="container">
+                <div class="col-md-12 col-sm-12">
+                    <div class="full-card">
+                      <div class="deatil-tab-employ tool-tab">
+							<ul class="nav simple nav-tabs" id="simple-design-tab">
+								<li><a href="#address">Address</a></li>
+								<li>
+							    {% for i in profilelist %}
+								{% for j in authuser %}		
+						    </li>
+							</ul>
+							<div class="tab-content">
+								<div id="address">
+									<h3>Address Info</h3>
+									<ul class="job-detail-des">
+										<li><span>Job Title:</span>{{i.jobtitle}}</li>
+										<li><span>Email:</span>{{i.email}}</li>
+										<li><span>Username:</span>{{i.username}}</li>
+										<li><span>Location:</span>{{i.address}}</li>
+										<li><span>Experience</span>{{i.experience}}</li>
+										<li><span>Current Job</span>{{i.currentjob}}</li>
+										<li><span>Job Type:</span>{{i.jobtype}}</li>
+										<li><span>Job Applied Date:</span>{{i.date |date:"D d M Y"}}</li>
+										<li><span>Job Applied Date:</span>{{i.date |date:"D d M Y"}}</li>
+										<li><span>Resume:</span>
+											<a href="../../media/{{i.fileupload}}" class="btn btn-success manage-btn" data-placement="top" title=""><i class="ti-download"></i>Resume</a>
+										</li>
+										<li><span>Last login:</span>{{j.last_login}}</li>
+										<form action="" method="post">
+											{% csrf_token %}
+										<select class="btn btn-primary" name="positionofjob">
+											<option value="shortlisted">Shortlisted</option>
+											<option value="Waiting">Waiting</option>
+											<option value="KIP">KIP</option>
+										</select>
+										<button type="submit" class="btn btn-primary">Update</button>
+									</form>
+									</ul>
+								</div>
+                                {%endfor%}
+								{%endfor%}
+
+		</div>
+					</div>
+				</div>
+		{%endblock%}

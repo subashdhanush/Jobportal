@@ -1,0 +1,51 @@
+{% extends 'candidatedbase.html' %}
+{% load static %}
+{% block content %}
+<div class="col-lg-9 col-md-8">
+	<div class="dashboard-body">
+		<div class="dashboard-caption">
+                    <div class="full-card">
+							<ul class="nav simple nav-tabs" id="simple-design-tab">
+								<li><a href="#address">Profile</a></li>
+                                <!-- <li><a href="">Match Jobs</a></li> -->
+							</ul>
+							<!-- < class="tab-content"> -->
+                            
+                            {% for i in sekerlist%}
+								<div id="address">
+									<ul class="job-detail-des">
+										<li><span>Email:</span>{{i.email}}</li>
+                                        <li><span>Qualification:</span>{{i.Qualification}}</li>
+										<li><span>Phone no:</span>{{i.contactnumber}}</li>
+										<li><span>Current Job:</span>{{i.currentjob}}</li>
+										<li><span>Singaporean:</span>{{i.singaporean}}</li>
+										<!-- <li><span>Location:</span>{{i.location}}</li>
+										<li><span>Skills:</span>{{i.skills}}</li>
+										<li><span>Languages:</span>{{i.languages}}</li> -->
+										<!-- <li><span>Email:</span>youremail@gmail.com</li> -->
+									</ul>
+								</div>
+                                {%endfor%}
+ 
+
+
+<!-- 
+                                {% for i in empfilled%}
+								<div id="address">
+									<ul class="job-detail-des">
+										<li><span>Email:</span>{{i.email}}</li>
+										<li><span>Phone no:</span>{{i.phone}}</li>
+										<li><span>Location:</span>{{i.joblocation}}</li>
+										<li><span>Facebook:</span>{{i.faceebook}}</li>
+										<li><span>Twitter:</span>{{i.twitter}}</li>
+										<li><span>Google Plus:</span>{{i.googleplus}}</li>
+										<li><span>DOB:</span>{{i.dof}}</li>
+									</ul>
+								</div>
+                                {%endfor%} -->
+			
+			
+			
+		</div>
+	
+{%endblock%}

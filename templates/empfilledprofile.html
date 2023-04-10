@@ -1,0 +1,24 @@
+{% extends 'empbase.html' %}
+{% load static %}
+{% block content%}
+<div class="col-lg-9 col-md-8">
+	<div class="dashboard-body">
+		<div class="dashboard-caption">
+			<div class="input-group">
+                <div class="col-4"> 
+                <label for="exampleInputPassword1">Email Address<span class="star_red">*</span></label>
+                </div> 
+                <div class="col-8">
+                <!-- <input type="text" name="NameofProfessional" class="form-control form-control form-control-lg" required> -->
+                <span class="rltv"><em>{{request.user.email}}</em></span>
+             </div>  
+             </div>
+			
+			
+		</div>
+	</div>
+</div>
+
+</div>
+</div>
+{%endblock%}

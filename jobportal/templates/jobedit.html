@@ -1,0 +1,475 @@
+{% extends 'empbase.html' %}
+{% load static %}
+
+{% block content %}
+<div class="col-lg-9 col-md-8">
+	<div class="dashboard-body">
+		<div class="dashboard-caption">
+			
+			<div class="dashboard-caption-header">
+				<h4><i class="ti-ruler-pencil"></i>Post New Page</h4>
+			</div>
+			
+			<div class="dashboard-caption-wrap">
+				<form class="post-form" action="" method="post" enctype="multipart/form-data">
+                    {% for item in joblist %}
+					{%csrf_token%}
+					
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-12 col-sm-12">
+							<div class="form-group">
+								<label>Job Title*</label>
+								<input type="text" class="form-control" placeholder="Enter Title" name="jobtitle" value="{{item.jobtitle}}" required>
+							</div>	
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12 col-sm-12">
+							<div class="form-group">
+								<label>Company Name*</label>
+								<input type="text" class="form-control" placeholder="Enter Title" name="companyname" value="{{item.companyname}}" required>
+							</div>	
+						</div>
+					</div>
+
+					<!-- <div class="row">
+						<div class="col-md-12 col-sm-12">
+							<div class="form-group">
+								<label>Company Logo*</label>
+								<input type="file" class="form-control" name="companylogo" required>
+							</div>	
+						</div>
+					</div> -->
+					
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-12 col-sm-12">
+							<div class="form-group">
+								<label>Job Description</label>
+								<textarea class="form-control about height-120" placeholder="About Company" name="Description" required>{{item.description}}</textarea>
+							</div>	
+						</div>
+					</div>
+					
+					<!-- row -->
+					<div class="row">
+					
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="form-group">
+								<label>Job Category*</label>
+								<select id="jb-category" class="form-control" name="jobcategory">
+									<!-- <option>Choose Category</option> -->
+									<!-- <option>Accounting Assistant</option>
+									<option>Arts, Design, Media</option>
+									<option>Charity & Voluntary</option>
+									<option>Education & Coachs</option>
+									<option>Finance And Business</option>
+									<option>IT & Computer</option>
+									<option>Banking</option> -->
+									<option  value="{{item.jobcategory}}">{{item.jobcategory}}</option>
+                                <option  value="Accounting and Finance">Accounting and Finance</option>
+                                <option  value="Administrative and Clerical">Administrative and Clerical</option>
+                                <option  value="Beauty and Wellness">Beauty and Wellness</option>
+                                <option  value="Building and Construction">Building and Construction</option>
+                                <option  value="Callcentres and Telemarketing">Callcentres and Telemarketing  </option>
+                                <option  value="Cleaning and Housekeeping ">Cleaning and Housekeeping </option>
+                                <option  value="Creative and Design">Creative and Design</option>
+                                <option value="Customer Service and Receptionists">Customer Service and Receptionists</option>
+                                <option value="Drivers and Riders and Delivery">Drivers and Riders and Delivery</option>
+                                <option value="Education and Training">Education and Training</option>
+                                <option value="General Production and Operators">General Production and Operators</option>
+                                <option value="Hospitality and F&B">Hospitality and F&B</option>
+                                <option value="Human Resources">Human Resources</option>
+                                <option value="IT and Technical and Engineers">IT and Technical and Engineers</option>
+                                <option value="Manufacturing">Manufacturing</option>
+                                <option value="Nursing and Healthcare">Nursing and Healthcare</option>
+                                <option value="Sales Retail and Marketing">Sales Retail and Marketing</option>
+                                <option value="Secretaries and Personal Assistants">Secretaries and Personal Assistants</option>
+                                <option value="Security">Security</option>
+                                <option value="Temporary and Events">Temporary and Events</option>
+                                <option value="Warehousing and Logistics">Warehousing and Logistics</option>
+                                <option value="Others">Others</option>
+								</select>
+							</div>	
+						</div>
+						
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="form-group">
+								<label>Job Type*</label>
+								<select id="jb-type" class="form-control" name="jobtype">
+									<option>{{item.jobtype}}</option>
+									<option>Contract</option>
+									<option>Full-Time</option>
+									<option>Part-time</option>
+									<option>Temporary</option>
+									<option>Freelancer</option>
+								</select>
+							</div>	
+						</div>
+						
+						<!-- <div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="form-group">
+								<label>Job Level*</label>
+								<select id="jb-level" class="form-control" name="joblevel">
+									<option>{{item.joblevel}}</option>
+									<option>Junior</option>
+									<option>Manager</option>
+									<option>Senior</option>
+								</select>
+							</div>	
+						</div> -->
+
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="form-group">
+								<label>Openings*</label>
+								<input type="text" class="form-control" name="openings" value="{{item.openings}}" required>
+							</div>	
+						</div>
+						
+					</div>
+					
+					<!-- row -->
+					<div class="row">
+					
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="form-group">
+								<label>Salary From</label>
+								<input type="text" class="form-control" placeholder="Enter Salary From" name="salaryfrom" value="{{item.salaryfrom}}" required>
+							</div>	
+						</div>
+						
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="form-group">
+								<label>Salary To</label>
+								<input type="text" class="form-control" placeholder="Enter Salary To" name="salaryto" value="{{item.salaryto}}" required>
+							</div>	
+						</div>
+						
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="form-group">
+								<label>Salary Postfix</label>
+								<input type="text" class="form-control" placeholder="EX. Month" name="experience" value="{{item.experience}}" required>
+							</div>	
+						</div>
+						
+					</div>
+
+					<!-- <div class="row">
+					
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="form-group">
+								<label>Job Languages(Max of 3)</label>
+								<select class="language form-control" name="language1" required>
+									<option>{{item.language1}}</option>
+									<option>Afrikanns</option>
+									<option>Albanian</option>
+									<option>English</option>
+									<option>Estonian</option>
+									<option>Georgian</option>
+									<option>French</option>
+									<option>German</option>
+									<option>Punjabi</option>
+									<option>Chinese(Mandarin)</option>
+									<option>Bahasa Melayu</option>
+									<option>Tamil</option>
+									<option>Cantonese</option>
+									<option>Hakka</option>
+									<option>Hokkien</option>
+									<option>Teochew</option>
+									<option>Hindi</option>
+								</select>
+							</div>	
+						</div>
+						
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="form-group">
+								<label></label>
+								<select class="language form-control" name="language2">
+									<option>{{item.language2}}</option>
+									<option>Afrikanns</option>
+									<option>Albanian</option>
+									<option>English</option>
+									<option>Estonian</option>
+									<option>Georgian</option>
+									<option>French</option>
+									<option>German</option>
+									<option>Punjabi</option>
+									<option>Chinese(Mandarin)</option>
+									<option>Bahasa Melayu</option>
+									<option>Tamil</option>
+									<option>Cantonese</option>
+									<option>Hakka</option>
+									<option>Hokkien</option>
+									<option>Teochew</option>
+									<option>Hindi</option>
+								</select>
+							</div>	
+						</div>
+						
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="form-group">
+								<label></label>
+								<select class="language form-control" name="language3">
+									<option>{{item.language3}}</option>
+									<option>Afrikanns</option>
+									<option>Albanian</option>
+									<option>English</option>
+									<option>Estonian</option>
+									<option>Georgian</option>
+									<option>French</option>
+									<option>German</option>
+									<option>Punjabi</option>
+									<option>Chinese(Mandarin)</option>
+									<option>Bahasa Melayu</option>
+									<option>Tamil</option>
+									<option>Cantonese</option>
+									<option>Hakka</option>
+									<option>Hokkien</option>
+									<option>Teochew</option>
+									<option>Hindi</option>
+								</select>
+							</div>	
+						</div>
+						
+					</div> -->
+					<!-- row -->
+					
+					<!-- row -->
+					<!-- <div class="row">
+						<div class="col-md-12 col-sm-12">
+							<div class="form-group">
+								<label>Language</label>
+								<select class="language form-control"  multiple="multiple" name="language[]" required>
+									<option>Afrikanns</option>
+									<option>Albanian</option>
+									<option>English</option>
+									<option>Estonian</option>
+									<option>Georgian</option>
+									<option>French</option>
+									<option>German</option>
+								</select>
+							</div>	
+						</div>
+					</div> -->
+					
+					<!-- <div class="row mrg-top-30">
+						<div class="col-md-12 col-sm-12">
+							<div class="form-group">
+								<h4>Application Settings</h4>
+							</div>	
+						</div>
+					</div>
+					 -->
+					<!-- <div class="row">
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="form-group">
+								<label>Custom Job URL</label>
+								<input type="text" class="form-control" placeholder="https://site.com/custom-url/" name="url" value="{{item.url}}" required>
+							</div>	
+						</div> -->
+						
+						<!-- <div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="form-group">
+								<label>Email For Applications</label>
+								<input type="text" class="form-control" placeholder="Ex.myapplicat@gmail.com" name="companyemail" value="{{item.email}}" required>
+							</div>	
+						</div> -->
+						
+						<!-- <div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="form-group">
+								<label>Deadline Submission</label>
+								<input type="datetime-local" id="expirejob" data-lang="en"  data-min-year="2017" data-max-year="2020" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control" name="datetime"  value={{item.date}} required>
+							</div>	
+						</div>
+					</div> -->
+					
+					
+					
+					<div class="row mrg-top-30">
+						<div class="col-md-12 col-sm-12">
+							<div class="form-group">
+								<h4>Required Skills</h4>
+							</div>	
+						</div>
+						<div class="col-md-12 col-sm-12">
+							<div class="form-group">
+								<select class="form-control"  name="skills">
+									<!-- <option>HTML5</option>
+									<option>Css3</option>
+									<option>Photoshop</option>
+									<option>Php</option>
+									<option>Wordpress</option>
+									<option>Bootstrap</option>
+									<option>Magento</option> -->
+									<option value="{{item.skills}}">{{item.skills}}</option>
+ <option value="Book Keeping">Book Keeping</option>
+<option value="Taxation">Taxation</option>
+<option value="Cost Accounting">Cost Accounting</option>
+<option value="Financial Accounting and Reporting">Financial Accounting and Reporting</option>
+<option value="Internal Cost Accounting">Internal Cost Accounting</option>
+<option value="Payroll Accounting">Payroll Accounting</option>
+<option value="Auditing">Auditing</option>
+<option value="MS Office">MS Office</option>
+<option value="Data Entry">Data Entry</option>
+<option value="Filling and Document Management">Filling and Document Management</option>
+<option value="Handle Enquiries and Requests">Handle Enquiries and Requests</option>
+<option value="Billing and Invoicing">Billing and Invoicing</option>
+<option value="Facial and Massage">Facial and Massage</option>
+<option value="Consultation">Consultation</option>
+<option value="Makeup and Styling">Makeup and Styling</option>
+<option value="Cosmetics">Cosmetics</option>
+<option value="Hair Dressing">Hair Dressing</option>
+<option value="Manicure and Pedicure">Manicure and Pedicure</option>
+<option value="Plumbering">Plumbering</option>
+<option value="Car Washing">Car Washing</option>
+<option value="Dish Washing">Dish Washing</option>
+<option value="Ironing">Ironing</option>
+<option value="Vacuuming">Vacuuming</option>
+<option value="General Cleaning">General Cleaning</option>
+<option value="Computer graphics and Animation">Computer graphics and Animation</option>
+<option value="Film  and Video and Audio editing">Film  and Video and Audio editing</option>
+<option value="Copy Writing and Creative Writing">Copy Writing and Creative Writing</option>
+<option value="Telephone Support">Telephone Support</option>
+<option value="Front Desk and Concierge">Front Desk and Concierge</option>
+<option value="Outbound Sales">Outbound Sales</option>
+<option value="Inbound Sales">Inbound Sales</option>
+<option value="Courier Services">Courier Services</option>
+<option value="Delivery Services">Delivery Services</option>
+<option value="Class  2/2A/2B">Class  2/2A/2B</option>
+<option value="Class  3/3A">Class  3/3A</option>
+<option value="Class  4/4A">Class  4/4A</option>
+<option value="Class 5">Class 5</option>
+<option value="Food Delivery">Food Delivery</option>
+<option value="Navigation">Navigation</option>
+<option value="Driving and Transporting">Driving and Transporting</option>
+<option value="Vehicle Maintenance">Vehicle Maintenance</option>
+<option value="Teaching">Teaching</option>
+<option value="Tutouring">Tutouring</option>
+<option value="Classroom Management">Classroom Management</option>
+<option value="Communicative Skills">Communicative Skills</option>
+<option value="Customer Service">Customer Service</option>
+<option value="Time Management">Time Management</option>
+<option value="Interpersonal Skills">Interpersonal Skills</option>
+<option value="Communication Skills">Communication Skills</option>
+<option value="Organizational Skills">Organizational Skills</option>
+<option value="Multitasking">Multitasking</option>
+<option value="Conflict Management">Conflict Management</option>
+<option value="Cooking">Cooking</option>
+<option value="Catering">Catering</option>
+<option value="Food preparation">Food preparation</option>
+<option value="Order Taking">Order Taking</option>
+<option value="Banquet Service">Banquet Service</option>
+<option value="Dish Washing">Dish Washing</option>
+<option value="Cashiering">Cashiering</option>
+<option value="Shift Planning">Shift Planning</option>
+<option value="Stock Taking">Stock Taking</option>
+<option value="Outlet and Store Management">Outlet and Store Management</option>
+<option value="Baking">Baking</option>
+<option value="Bartending">Bartending</option>
+<option value="Recruitment">Recruitment</option>
+<option value="Payroll">Payroll</option>
+<option value="Performance Appraisal">Performance Appraisal</option>
+<option value="Database Related Skills">Database Related Skills</option>
+<option value="Information Security">Information Security</option>
+<option value="Networking(IT)">Networking(IT)</option>
+<option value="Programming">Programming</option>
+<option value="Testing(IT)">Testing(IT)</option>
+<option value="Troubleshoot and Repair">Troubleshoot and Repair</option>
+<option value="Computer Maintenance and Repair">Computer Maintenance and Repair</option>
+<option value="Equipment Maintenance">Equipment Maintenance</option>
+<option value="Aircraft and Maintenance">Aircraft and Maintenance</option>
+<option value="Quality control and Inspection">Quality control and Inspection</option>
+<option value="Electrical System Maintenance">Electrical System Maintenance</option>
+<option value="Software Development">Software Development</option>
+<option value="Care for sick">Care for sick</option>
+<option value="Child care">Child care</option>
+<option value="Elderly care">Elderly care</option>
+<option value="Infant care">Infant care</option>
+<option value="Monitoring and Administering Medication">Monitoring and Administering Medication</option>
+<option value="Forecasting">Forecasting</option>
+<option value="Event Management">Event Management</option>
+<option value="Market and Opinion Research">Market and Opinion Research</option>
+<option value="Public Relations Work">Public Relations Work</option>
+<option value="Negotiation and Persuasion">Negotiation and Persuasion/option>
+<option value="Media Planning">Media Planning</option>
+<option value="Prospecting">Prospecting</option>
+<option value="Product and Service Promotion">Product and Service Promotion</option>
+<option value="Cashiering">Cashiering</option>
+<option value="Telemarketing">Telemarketing</option>
+<option value="Telesales">Telesales</option>
+<option value="Canvassing">Canvassing</option>
+<option value="Minutes Taking">Minutes Taking</option>
+<option value="Coordination">Coordination</option>
+<option value="Handling Correspondence">Handling Correspondence</option>
+<option value="Record Filing">Record Filing</option>
+<option value="Managing Schedules">Managing Schedules</option>
+<option value="Conduct Crowd and Traffic Control">Conduct Crowd and Traffic Control</option>
+<option value="Evacuation">Evacuation</option>
+<option value="Manage Disorderly Content">Manage Disorderly Content</option>
+<option value="Surveillance">Surveillance</option>
+<option value="Law Enforcement">Law Enforcement</option>
+<option value="Stock Taking">Stock Taking</option>
+<option value="Packing and Sorting">Packing and Sorting</option>
+<option value="Inventory Control">Inventory Control</option>
+<option value="Processing Orders">Processing Orders</option>
+<option value="Manufacturing Planning">Manufacturing Planning</option>
+<option value="Product Planning">Product Planning</option>
+<option value="Equipment Maintenance">Equipment Maintenance</option>
+<option value="Equipment Operation">Equipment Operation</option>
+<option value="Product Quality Assurance">Product Quality Assurance</option>
+<option value="Production Schedule"></option>
+<option value="Inventory Control">Inventory Control</option>
+
+								</select>
+							</div>	
+						</div>
+					</div>
+					
+					<!-- row -->
+					<div class="row mrg-top-30">
+						<div class="col-md-12 col-sm-12">
+							<div class="form-group">
+								<h4>Job Loation</h4>
+							</div>	
+						</div>
+					</div>
+					
+					<!-- row -->
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12">
+							<div class="form-group">
+								<label>Address*</label>
+								<input type="text" class="form-control" placeholder="Ex. 502, Sector 20 C, Mohali" name="address" value="{{item.location}}" required>
+							</div>	
+						</div>
+						
+						<!-- <div class="col-lg-12 col-md-12 col-sm-12">
+							<div class="form-group">
+								<div id="singleMap" data-latitude="40.7427837" data-longitude="-73.11445617675781" data-mapTitle="Our Location"></div>
+							</div>	
+						</div> -->
+						
+					</div>
+					
+					<!-- row -->
+					<div class="row mrg-top-30">
+						<div class="col-md-12 col-sm-12">
+							<div class="form-group text-center">
+								<button type="submit" class="btn-savepreview"><i class="ti-angle-double-right"></i>Publish & Preview</button>
+							</div>	
+						</div>
+					</div>
+                 {%endfor%}
+					
+				</form>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+</div>
+</div>
+{%endblock%}

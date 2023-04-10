@@ -1,0 +1,160 @@
+{% extends 'empbase.html' %}
+{% load static %}
+
+{% block content %}
+<div class="col-lg-9 col-md-8">
+	<div class="dashboard-body">
+		
+		<div class="dashboard-caption">
+			
+			<div class="dashboard-caption-header">
+				<h4><i class="ti-ruler-pencil"></i>Post New Job</h4>
+			</div>
+			
+			<div class="dashboard-caption-wrap">
+				<form class="post-form" action="" method="POST" enctype="multipart/form-data">					
+					<!-- row -->
+					<div class="row">
+						{%csrf_token%}
+						<div class="col-md-12 col-sm-12">
+							<div class="form-group">
+								<label>Job Title*</label>
+								<input type="text" class="form-control" placeholder="Enter Title" name="jobtitle" maxlength="70"required>
+							</div>	
+							<h4 class="text-danger fw-bold">Job Title maximum capped Length 70 words</h4>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12 col-sm-12">
+							<div class="form-group">
+								<label>Company Name*</label>
+								<input type="text" class="form-control" placeholder="Enter Title" name="companyname" required>
+							</div>	
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12 col-sm-12">
+							<div class="form-group">
+								<label>Company Logo*</label>
+								<input type="file" class="form-control" name="companylogo" required>
+							</div>	
+						</div>
+					</div>
+					
+                   
+					
+					<div class="row">
+						
+					</div>
+					
+
+					<div class="row">
+					
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="form-group">
+								<label>Job Category*</label>
+								
+							</div>	
+						</div>
+						
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="form-group">
+								<label>Job Type*</label>
+								
+							</div>	
+						</div>
+
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="form-group">
+								<label>No of Openings*</label>
+								<input type="text" class="form-control"  name="openings" required>
+								
+							</div>	
+						</div>
+						
+						
+						
+					</div>
+					
+					
+					<div class="row">
+					
+						<div class="col-lg-4 col-md-6 col-sm-12">
+								
+						</div>
+						
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							
+						</div>
+						
+						<div class="col-lg-4 col-md-6 col-sm-12">
+								
+						</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="row mrg-top-30">
+						
+						</div>
+						<div class="col-md-12 col-sm-12">
+							<div class="form-group">
+								
+									
+							</div>	
+						</div>
+					</div>
+					
+					
+					<div class="row mrg-top-30">
+						<div class="col-md-12 col-sm-12">
+							<div class="form-group">
+								<h4>Job Loation</h4>
+							</div>	
+						</div>
+					</div>
+					
+				
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12">
+							<div class="form-group">
+								<label>Address*</label>
+								<input type="text" class="form-control" placeholder="Ex. 502, Sector 20 C, Mohali" name="address">
+							</div>	
+						</div>
+						
+						
+						
+					</div>
+					
+					
+					
+					<div class="row mrg-top-30">
+						<div class="col-md-12 col-sm-12">
+							<div class="form-group text-center">
+								<button type="submit" class="btn-savepreview" onclick="myprofile()"><i class="ti-angle-double-right"></i>Publish & Preview</button>
+							</div>	
+						</div>
+					</div>
+                    
+					
+					
+				</form>
+			</div>
+			
+		</div>
+	</div>
+
+	
+</div>
+
+</div>
+</div>
+
+
+{%endblock%}

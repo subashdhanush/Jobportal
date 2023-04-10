@@ -1,0 +1,35 @@
+{% extends 'empbase.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+                <ul class="nav simple nav-tabs" id="simple-design-tab">
+                    <li><a href="#address">Address</a></li>
+                    <li>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                    <select class="btn btn-primary" name="positionofjob">
+                        <option value="shortlisted">Shortlisted</option>
+                        <option value="Waiting">Waiting</option>
+                        <option value="KIP">KIP</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+                </li>
+                </ul>
+                   <div>
+                        <h3>Address Info</h3>
+                        <ul>
+                            <li><span>Job Title:</span>{{i.jobtitle}}</li>
+                            <li><span>Email:</span>{{i.email}}</li>
+                            <li><span>Username:</span>{{i.username}}</li>
+                            <li><span>Location:</span>{{i.address}}</li>
+                            <li><span>Experience</span>{{i.experience}}</li>
+                            <li><span>Job Type:</span>{{i.jobtype}}</li>
+                            <li><span>Job Applied Date:</span>{{i.date |date:"D d M Y"}}</li>
+                        </ul>
+                    </div>
+
+   </div>                 
+{%endblock%}

@@ -1,0 +1,232 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://www.paypal.com/sdk/js?client-id=Aao-Cw0pbqQuGaQl6-YawdWogOCjJuO8A4Cg0UlN15TCWhIL2PhpQHauKAccD92oUj9pFH3zzCkThRVx&currency=USD"></script>
+    <style>
+      #paypal-button-container
+      {
+        width:100%;
+        margin-top: 2em;
+      }
+    </style>
+</head>
+<body>
+    <div id="paypal-button-container"></div>
+</body>
+
+
+<script>
+  paypal.Buttons({
+
+    style: {
+      color:  'blue',
+      shape:  'pill',
+      label:  'pay',
+      height: 40
+  },
+
+      createOrder: function(data, actions) {
+          return fetch('/demo/checkout/api/paypal/order/create/', {
+              method: 'post'
+          }).then(function(res) {
+              return res.json();
+          }).then(function(orderData) {
+              return orderData.id;
+          });
+      },
+
+      onApprove: function(data, actions) {
+          return fetch('/demo/checkout/api/paypal/order/' + data.orderID + '/capture/', {
+              method: 'post'
+          }).then(function(res) {
+              return res.json();
+          }).then(function(orderData) {
+              
+              var errorDetail = Array.isArray(orderData.details) && orderData.details[0];
+
+              if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED') {
+                  return actions.restart(); 
+              }
+
+              if (errorDetail) {
+                  var msg = 'Sorry, your transaction could not be processed.';
+                  if (errorDetail.description) msg += '\n\n' + errorDetail.description;
+                  if (orderData.debug_id) msg += ' (' + orderData.debug_id + ')';
+                  return alert(msg); 
+              }
+
+             
+              console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+              var transaction = orderData.purchase_units[0].payments.captures[0];
+              alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+
+             
+          });
+      }
+
+  }).render('#paypal-button-container');
+</script>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title> PayPal Checkout Integration | Radio Fields </title>
+</head>
+
+<body>
+    
+
+    <label>
+        <input type="radio" name="payment-option" value="paypal" checked>
+        <img src="/demo/checkout/static/img/paypal-mark.jpg" alt="Pay with Paypal">
+    </label>
+
+    <label>
+        <input type="radio" name="payment-option" value="card">
+        <img src="/demo/checkout/static/img/card-mark.png" alt="Accepting Visa, Mastercard, Discover and American Express">
+    </label>
+
+    <div id="paypal-button-container"></div>
+    <div id="card-button-container" class="hidden"><button>Continue</button></div>
+
+   
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+
+    <script>
+        
+        document.querySelectorAll('input[name=payment-option]').forEach(function(el) {
+            el.addEventListener('change', function(event) {
+
+                
+                if (event.target.value === 'paypal') {
+                    document.querySelector('#card-button-container').style.display = 'none';
+                    document.querySelector('#paypal-button-container').style.display = 'inline-block';
+                }
+
+                
+                if (event.target.value === 'card') {
+                    document.querySelector('#card-button-container').style.display = 'inline-block';
+                    document.querySelector('#paypal-button-container').style.display = 'none';
+                }
+            });
+        });
+
+        
+        document.querySelector('#card-button-container').style.display = 'none';
+
+       
+        paypal.Buttons({
+            style: {
+                layout: 'horizontal'
+            }
+        }).render('#paypal-button-container');
+    </script>
+</body>
+
+</html> -->
+    
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Add meta tags for mobile and IE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title> PayPal Checkout Integration | Client Demo </title>
+</head>
+
+<body>
+    <!-- Set up a container element for the button -->
+    <div id="paypal-button-container"></div>
+
+    <!-- Include the PayPal JavaScript SDK -->
+    <!-- <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script> -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AbNfJX5Yh2gG8IFVUp6bCt4IsYRj7mzktyQlUHKGrLU6lBKdT9UGfLTpTKaQShFg8JPJYewoeqoHWWyX&currency=USD"></script>
+    <!-- <script src="https://www.paypal.com/sdk/js?client-id=Aao-Cw0pbqQuGaQl6-YawdWogOCjJuO8A4Cg0UlN15TCWhIL2PhpQHauKAccD92oUj9pFH3zzCkThRVx&currency=USD"></script> -->
+    <!-- <script src="https://www.paypal.com/sdk/js?client-id=Aao-Cw0pbqQuGaQl6-YawdWogOCjJuO8A4Cg0UlN15TCWhIL2PhpQHauKAccD92oUj9pFH3zzCkThRVx -->
+    <!-- =USD"></script> -->
+
+    <script>
+
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+              var cookies = document.cookie.split(';');
+              for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+                }
+              }
+            }
+            return cookieValue;
+          }
+          var csrftoken = getCookie('csrftoken');
+
+       function initPayPalButton()
+       {
+       paypal.Buttons({
+    
+       style:{
+       
+       shape:'rect',
+       color:'gold',
+       layout:'vertical',
+       label:'paypal', 
+       },
+       createOrder: function(data, actions) {
+        return actions.order.create({
+            purchase_units: [{
+                amount: {
+                    value: '50'
+                }
+            }]
+        });
+    }, 
+
+    onApprove: function(data, actions) {
+        
+    var url="{% url 'payment_complete' %}"
+    
+    return fetch(url,{
+
+    method:'POST',
+    headers:{
+    
+    'content-type':'application/json',
+    'X-CSRFToken':csrftoken,    
+    },
+    body:JSON.stringify({
+
+     orderID:data.orderID   
+    })
+   }).then(function(){
+   
+   location.href=""; 
+
+   })    
+    }
+
+       }).render('#paypal-button-container');
+
+
+
+       }
+       initPayPalButton();
+    </script>
+</body>
+
+</html>
+    

@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+				<div class="container">
+					
+					<div class="col-md-8 col-sm-12">
+						<div class="container-detail-box">
+                                                 
+                                                    <div class="apply-job-header">
+								<h1></h1>
+								
+							</div>
+							               {% for i in venues %}   
+					                              
+									<div class="blog-item">
+										<div class="post-thumbs"><a href="{% url 'songs' i.slug  %}"><img src="../../media/{{i.thumb_images}}" class="img-responsive" alt=""></a></div>
+										<div class="blog-detail">
+											<a href="{% url 'songs' i.slug  %}"><h4>{{i.title}}</h4></a>
+											<div class="post-info">{{i.body|truncatechars:40}}</div>
+										</div>
+									</div>
+                                                                       {% endfor %}
+
+
+
+
+
+                                                                  
+ 
+
+							     {% if songlist.has_previous %}  
+						             <a href="{% url 'songslist' %}?page={{songlist.previous_page_number}}">
+                                                             <button class="btn btn-primary" style="margin:5px;">Previous Page</button> 
+                                                             </a>
+                                                             {% endif %}
+   
+
+                                                             {% if songlist.has_next %}
+                                                             <a href="{% url 'songslist' %}?page={{songlist.next_page_number}}">
+                                                             <button class="btn btn-primary" style="margin:5px;">Next Page</button>
+                                                             </a>
+                                                             {% endif %}
+                                                       
+                                                           
+                                                            <ul class="pagination">
+
+{% if venues.has_previous %}
+    <li><a href="?page={{ venues.previous_page_number }}"><i class="fa fa-chevron-left" aria-hidden="true"></i></a></li>
+{% else %}
+    <li class="disabled"><span><i class="fa fa-chevron-left" aria-hidden="true"></i></span></li>
+{% endif %}
+
+{% if venues.number|add:'-4' > 1 %}
+    <li><a href="?page={{ page_obj.number|add:'-5' }}">&hellip;</a></li>
+{% endif %}
+
+{% for i in venues.paginator.page_range %}
+    {% if venues.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+    {% elif i > venues.number|add:'-3' and i < venues.number|add:'4' %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+    {% endif %}
+{% endfor %}
+
+{% if venues.paginator.num_pages > venues.number|add:'4' %}
+    <li><a href="?page={{ venues.number|add:'5' }}">&hellip;</a></li>
+{% endif %}
+
+{% if venues.has_next %}
+    <li><a href="?page={{ venues.next_page_number }}"><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+{% else %}
+    <li class="disabled"><span><i class="fa fa-chevron-right" aria-hidden="true"></i></span></li>
+{% endif %}
+
+</ul>
+
+                                                               
+                                                                 	
+							
+						</div>
+						
+						
+						
+						<!-- Similar Songs -->
+						
+					</div>
+					
+					<!-- Sidebar Start-->
+					<div class="col-md-4 col-sm-12">
+						
+						<!-- Job Detail -->
+						<div class="sidebar-container">
+						</div>
+						
+						<!-- Share This Job -->
+						<div class="sidebar-wrapper">
+							<div class="sidebar-box-header bb-1">
+								<h4>Share This Job</h4>
+							</div>
+                                                       <ul class="social-share">
+                                                        <h1>Add</h1>
+                                                        </ul>
+
+						
+						</div>
+						
+                                               <p></p>
+                                               <div class="sidebar-wrapper">
+                                                        <div class="sidebar-box-header bb-1">
+                                                                <h4 class="text-center">Recent Posts</h4>
+                                                        </div>
+
+                                                        <ul class="social-share">
+                                                          {% for recent in recentsongs %}
+                                                         <div class="member-profile-detail">
+                                                                       <span><a href="{% url 'songs' recent.slug  %}">{{recent.title}}</a></span>
+                                                                       <span><a href="{% url 'songs' recent.slug  %}" class="cl-primary">{{recent.body|truncatechars:30}}</a></span>
+                                                                </div>
+                                                        {% endfor %}
+                                                        </ul>
+                                                </div>
+
+
+                                              <div class="sidebar-wrapper">
+                                                        <div class="sidebar-box-header bb-1">
+                                                                <h4 class="text-center">Promotions</h4>
+                                                        </div>
+
+                                                        <ul class="social-share">
+                                                          {% for promotion in promotionsongs %}
+                                                         <div class="member-profile-detail">
+                                                                       <span><a href="{% url 'songs' promotion.slug  %}">{{promotion.title}}</a></span>
+                                                                       <span><a href="{% url 'songs' promotion.slug  %}" class="cl-primary">{{promotion.body|truncatechars:30}}</a></span>
+                                                                </div>
+                                                        {% endfor %}
+                                                        </ul>
+                                                </div>
+                                             <p></p>
+                                             
+
+
+
+
+
+
+					</div>
+					<!-- End Sidebar -->
+					
+				</div>
+			<!-- Job Detail End -->
+ </section>
+            {%endblock%}
+						
+		

@@ -1,0 +1,260 @@
+{% extends 'empbase.html' %}
+{% load static %}
+{% block content %}
+<div class="col-lg-9 col-md-8">
+	<div class="dashboard-body">
+		<div class="dashboard-caption">
+			
+			<div class="dashboard-caption-header">
+				<h4><i class="ti-user"></i>Applications({{countlist}})</h4>
+			</div>
+			
+			<div class="dashboard-caption-wrap">
+				
+				<!-- row -->
+				<div class="row">
+					
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Search Name">
+						</div>
+					</div>
+					
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="form-group">
+							<select id="jb-filter" class="form-control">
+								<option>Choose Job Status</option>
+								<option>All Jobs</option>
+								<option>Approved Jobs</option>
+								<option>Expire Jobs</option>
+								<option>Pending Payment</option>
+								<option>Rejected Jobs</option>
+								<option>Draft Jobs</option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="form-group">
+							<select id="application-status" class="form-control">
+								<option>Status</option>
+								<option>Approved</option>
+								<option>Pending</option>
+								<option>Rejected</option>
+							</select>
+						</div>
+					</div>
+					
+				</div>
+				<!-- row -->
+				
+				<ul class="list">
+					{% for i in applicantlist %}
+					<li class="manage-list-row clearfix">
+						<div class="job-info">
+							<div class="job-img">
+								<img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" class="attachment-thumbnail" alt="Academy Pro Theme">
+							</div>
+							<div class="job-details">
+								<h3 class="job-name"><a class="job_name_tag" href="{% url 'profiledetails' i.username  i.jobtitle%}">{{i.username}}</a></h3>
+								<small class="job-company"><i class="ti-home"></i>{{i.companyname}}</small>
+								<small class="job-sallery"><i class="ti-time"></i>{{i.experience}} Year Ex.</small>
+								<small class="job-sallery"><i class="ti-time"></i>{{i.currentjob}}</small>
+								<small class="job-sallery"><i class="ti-location-pin"></i>{{i.address}}</small>
+								<!-- <select name="positionofjob" class="shortlisted-can">
+							    <option value="Shortlisted">Shortlisted</option>
+								<option value="Waiting">Waiting</option>
+								<option value="Hiring">Hiring</option>		
+								</select> -->
+								<div class="shortlisted-can">{{i.status}}</div>
+								<div class="candi-skill">
+									<span class="skill-tag">css</span>
+									<span class="skill-tag">HTML</span>
+									<span class="skill-tag">Photoshop</span>
+								</div>
+							</div>
+						</div>
+						<div class="job-buttons">
+							<a href="../../media/{{i.fileupload}}" class="btn btn-success manage-btn" data-placement="top" title=""><i class="ti-download"></i>Resume</a>
+							<!-- <a href="#SendMessage" data-toggle="modal" class="btn btn-blue manage-btn" data-placement="top" title="Message"><i class="ti-email"></i></a>												 -->
+							<!-- <a href="#" class="btn btn-cancel manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="ti-close"></i></a> -->
+						</div>
+					</li>
+					{%endfor%}
+					
+					<!-- <li class="manage-list-row clearfix">
+						<div class="job-info">
+							<div class="job-img">
+								<img src="{% static 'assets/img/can-2.png'%}" class="attachment-thumbnail" alt="Academy Pro Theme">
+							</div>
+							<div class="job-details">
+								<h3 class="job-name"><a class="job_name_tag" href="#">Shriya Rukwai</a></h3>
+								<small class="job-company"><i class="ti-home"></i>Project Manager</small>
+								<small class="job-sallery"><i class="ti-time"></i>4 Year Ex.</small>
+								<small class="job-sallery"><i class="ti-location-pin"></i>United State</small>
+								<div class="candi-skill">
+									<span class="skill-tag">css</span>
+									<span class="skill-tag">HTML</span>
+									<span class="skill-tag">Photoshop</span>
+								</div>
+							</div>
+						</div>
+						<div class="job-buttons">
+							<a href="#" class="btn btn-gary manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Download Resume"><i class="ti-download"></i></a>
+							<a href="#" class="btn btn-shortlist manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Shortlist"><i class="ti-check"></i></a> 
+							<a href="#" class="btn btn-cancel manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="ti-close"></i></a>
+						</div>
+					</li> -->
+					
+					<!-- <li class="manage-list-row clearfix">
+						<div class="job-info">
+							<div class="job-img">
+								<img src="{% static 'assets/img/can-1.png'%}" class="attachment-thumbnail" alt="Academy Pro Theme">
+							</div>
+							<div class="job-details">
+								<h3 class="job-name"><a class="job_name_tag" href="#">Ushwan Uslaf</a></h3>
+								<small class="job-company"><i class="ti-home"></i>Web Developer</small>
+								<small class="job-sallery"><i class="ti-time"></i>4 Year Ex.</small>
+								<small class="job-sallery"><i class="ti-location-pin"></i>United State</small>
+								<div class="shortlisted-can">shortlisted</div>
+								<div class="candi-skill">
+									<span class="skill-tag">css</span>
+									<span class="skill-tag">HTML</span>
+									<span class="skill-tag">Photoshop</span>
+								</div>
+							</div>
+						</div>
+						<div class="job-buttons">
+							<a href="#" class="btn btn-gary manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Download Resume"><i class="ti-download"></i></a>
+							<a href="#SendMessage" data-toggle="modal" class="btn btn-blue manage-btn" data-placement="top" title="Message"><i class="ti-email"></i></a>												
+							<a href="#" class="btn btn-cancel manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="ti-close"></i></a>
+						</div>
+					</li> -->
+					
+					<!-- <li class="manage-list-row clearfix">
+						<div class="job-info">
+							<div class="job-img">
+								<img src="{% static 'assets/img/can-4.png'%}" class="attachment-thumbnail" alt="Academy Pro Theme">
+							</div>
+							<div class="job-details">
+								<h3 class="job-name"><a class="job_name_tag" href="#">Riya Rajputr</a></h3>
+								<small class="job-company"><i class="ti-home"></i>Team Lead</small>
+								<small class="job-sallery"><i class="ti-time"></i>8 Year Ex.</small>
+								<small class="job-sallery"><i class="ti-location-pin"></i>United State</small>
+								<div class="candi-skill">
+									<span class="skill-tag">css</span>
+									<span class="skill-tag">HTML</span>
+									<span class="skill-tag">Photoshop</span>
+								</div>
+							</div>
+						</div>
+						<div class="job-buttons">
+							<a href="#" class="btn btn-gary manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Download Resume"><i class="ti-download"></i></a>
+							<a href="#" class="btn btn-shortlist manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Shortlist"><i class="ti-check"></i></a> 
+							<a href="#" class="btn btn-cancel manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="ti-close"></i></a>
+						</div>
+					</li>
+					 -->
+					<!-- <li class="manage-list-row clearfix">
+						<div class="job-info">
+							<div class="job-img">
+								<img src="{% static 'assets/img/can-3.png'%}" class="attachment-thumbnail" alt="Academy Pro Theme">
+							</div>
+							<div class="job-details">
+								<h3 class="job-name"><a class="job_name_tag" href="#">Mo. Raj Mishra</a></h3>
+								<small class="job-company"><i class="ti-home"></i>Java Developer</small>
+								<small class="job-sallery"><i class="ti-time"></i>6 Year Ex.</small>
+								<small class="job-sallery"><i class="ti-location-pin"></i>United State</small>
+								<div class="shortlisted-can">shortlisted</div>
+								<div class="candi-skill">
+									<span class="skill-tag">css</span>
+									<span class="skill-tag">HTML</span>
+									<span class="skill-tag">Photoshop</span>
+								</div>
+							</div>
+						</div>
+						<div class="job-buttons">
+							<a href="#" class="btn btn-gary manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Download Resume"><i class="ti-download"></i></a>
+							<a href="#SendMessage" data-toggle="modal" class="btn btn-blue manage-btn" data-placement="top" title="Message"><i class="ti-email"></i></a>												
+							<a href="#" class="btn btn-cancel manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="ti-close"></i></a>
+						</div>
+					</li>
+					 -->
+					<!-- <li class="manage-list-row clearfix">
+						<div class="job-info">
+							<div class="job-img">
+								<img src="{% static 'assets/img/can-2.png'%}" class="attachment-thumbnail" alt="Academy Pro Theme">
+							</div>
+							<div class="job-details">
+								<h3 class="job-name"><a class="job_name_tag" href="#">Neeta Uswan</a></h3>
+								<small class="job-company"><i class="ti-home"></i>Php Developer</small>
+								<small class="job-sallery"><i class="ti-time"></i>7 Year Ex.</small>
+								<small class="job-sallery"><i class="ti-location-pin"></i>United State</small>
+								<div class="candi-skill">
+									<span class="skill-tag">css</span>
+									<span class="skill-tag">HTML</span>
+									<span class="skill-tag">Photoshop</span>
+								</div>
+							</div>
+						</div>
+						<div class="job-buttons">
+							<a href="#" class="btn btn-gary manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Download Resume"><i class="ti-download"></i></a>
+							<a href="#" class="btn btn-shortlist manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Shortlist"><i class="ti-check"></i></a> 
+							<a href="#" class="btn btn-cancel manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="ti-close"></i></a>
+						</div>
+					</li>
+					 -->
+					<!-- <li class="manage-list-row clearfix">
+						<div class="job-info">
+							<div class="job-img">
+								<img src="{% static 'assets/img/can-1.png'%}" class="attachment-thumbnail" alt="Academy Pro Theme">
+							</div>
+							<div class="job-details">
+								<h3 class="job-name"><a class="job_name_tag" href="#">Daniel Duke</a></h3>
+								<small class="job-company"><i class="ti-home"></i>UI/UX Developer</small>
+								<small class="job-sallery"><i class="ti-time"></i>5.5 Year Ex.</small>
+								<small class="job-sallery"><i class="ti-location-pin"></i>United State</small>
+								<div class="shortlisted-can">shortlisted</div>
+								<div class="candi-skill">
+									<span class="skill-tag">css</span>
+									<span class="skill-tag">HTML</span>
+									<span class="skill-tag">Photoshop</span>
+								</div>
+							</div>
+						</div>
+						<div class="job-buttons">
+							<a href="#" class="btn btn-gary manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Download Resume"><i class="ti-download"></i></a>
+							<a href="#SendMessage" data-toggle="modal" class="btn btn-blue manage-btn" data-placement="top" title="Message"><i class="ti-email"></i></a>												
+							<a href="#" class="btn btn-cancel manage-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="ti-close"></i></a>
+						</div>
+					</li>
+				 -->
+				</ul>
+				
+				<ul class="pagination">
+					<li class="page-item">
+					  <a class="page-link" href="#" aria-label="Previous">
+						<i class="ti-arrow-left"></i>
+						<span class="sr-only">Previous</span>
+					  </a>
+					</li>
+					<li class="page-item active"><a class="page-link" href="#">1</a></li>
+					<li class="page-item"><a class="page-link" href="#">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item">
+					  <a class="page-link" href="#" aria-label="Next">
+						<i class="ti-arrow-right"></i>
+						<span class="sr-only">Next</span>
+					  </a>
+					</li>
+				</ul>
+				
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+</div>
+</div>
+{%endblock%}

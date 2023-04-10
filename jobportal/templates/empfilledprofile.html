@@ -1,0 +1,31 @@
+{% extends 'empbase.html' %}
+{% load static %}
+{% block content %}
+<div class="col-lg-9 col-md-8">
+	<div class="dashboard-body">
+		<div class="dashboard-caption">
+                    <div class="full-card">
+							<ul class="nav simple nav-tabs" id="simple-design-tab">
+								<li><a href="">Address</a></li>
+                                <li><a href="">Match Jobs</a></li>
+							</ul>
+							<!-- < class="tab-content"> -->
+                                {% for i in empfilled%}
+								<div id="address">
+									<!-- <h3>Address Info</h3> -->
+									<ul class="job-detail-des">
+										<li><span>Name:</span>{{i.Fullname}}</li>
+										<li><span>Email:</span>{{i.email}}</li>
+										<li><span>Phone no:</span>{{i.phone}}</li>
+										<li><span>Company Name:</span>{{i.companyname}}</li>
+										<li><span>Company Address:</span>{{i.empaddress}}</li>
+										<!-- <li><span>Email:</span>youremail@gmail.com</li> -->
+									</ul>
+								</div>
+                                {%endfor%}
+			
+			
+			
+		</div>
+	
+{%endblock%}

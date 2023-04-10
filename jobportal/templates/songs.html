@@ -1,0 +1,104 @@
+{% extends 'empbase.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+				<div class="container">
+					
+					<div class="col-md-8 col-sm-12">
+						<div class="container-detail-box">
+						
+							<div class="apply-job-header">
+								<h1>Song title</h1>
+								
+							</div>
+							               {% for i in songlist %}   
+					                              
+									<div class="blog-item">
+										<div class="post-thumbs"><a href="{% url 'songs' i.slug  %}"><img src="../../media/{{i.thumb_images}}" class="img-responsive" alt=""></a></div>
+										<div class="blog-detail">
+											<a href="{% url 'songs' i.slug  %}"><h4>{{i.title}}</h4></a>
+											<div class="post-info">{{i.body|truncatechars:40}}</div>
+										</div>
+									</div>
+                                                                        {% endfor %}
+						
+			
+							
+							
+							
+						</div>
+						
+						
+						
+						<!-- Similar Songs -->
+						
+					</div>
+					
+					<!-- Sidebar Start-->
+					<div class="col-md-4 col-sm-12">
+						
+						<!-- Job Detail -->
+						<div class="sidebar-container">
+						</div>
+						
+						<!-- Share This Job -->
+						<div class="sidebar-wrapper">
+							<div class="sidebar-box-header bb-1">
+								<h4>Share This Job</h4>
+							</div>
+                                                       <ul class="social-share">
+                                                        <h1>Add</h1>
+                                                        </ul>
+
+						
+						</div>
+						
+                                               <p></p>
+                                               <div class="sidebar-wrapper">
+                                                        <div class="sidebar-box-header bb-1">
+                                                                <h4 class="text-center">Recent Posts</h4>
+                                                        </div>
+
+                                                        <ul class="social-share">
+                                                          {% for recent in recentsongs %}
+                                                         <div class="member-profile-detail">
+                                                                       <span><a href="{% url 'songs' recent.slug  %}">{{recent.title}}</a></span>
+                                                                       <span><a href="{% url 'songs' recent.slug  %}" class="cl-primary">{{recent.body|truncatechars:30}}</a></span>
+                                                                </div>
+                                                        {% endfor %}
+                                                        </ul>
+                                                </div>
+
+
+                                              <div class="sidebar-wrapper">
+                                                        <div class="sidebar-box-header bb-1">
+                                                                <h4 class="text-center">Promotions</h4>
+                                                        </div>
+
+                                                        <ul class="social-share">
+                                                          {% for promotion in promotionsongs %}
+                                                         <div class="member-profile-detail">
+                                                                       <span><a href="{% url 'songs' promotion.slug  %}">{{promotion.title}}</a></span>
+                                                                       <span><a href="{% url 'songs' promotion.slug  %}" class="cl-primary">{{promotion.body|truncatechars:30}}</a></span>
+                                                                </div>
+                                                        {% endfor %}
+                                                        </ul>
+                                                </div>
+                                             <p></p>
+                                             
+
+
+
+
+
+
+					</div>
+					<!-- End Sidebar -->
+					
+				</div>
+			</section>
+			<!-- Job Detail End -->
+            {%endblock%}
+						
+		
